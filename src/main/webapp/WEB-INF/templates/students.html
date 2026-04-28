@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Student</title>
+</head>
+<body>
+<table border="1" style="" cellpadding="20">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>code</th>
+        <th>full name</th>
+        <th>email</th>
+        <th>major</th>
+        <th>gpa</th>
+        <th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student: ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.studentCode}"></td>
+        <td th:text="${student.fullName}"></td>
+        <td th:text="${student.email}"></td>
+        <td th:text="${student.major}"></td>
+        <td th:text="${student.gpa}"></td>
+        <td>
+            <a th:href="@{/students/details/{id}/form-update(id=${student.id})}">
+                <button type="button">sua</button>
+            </a>
+            <a th:href="@{/students/delete/{id}(id=${student.id})}"
+               onclick="return confirm('Bạn có chắc chắn muốn xóa sinh viên này không?')">
+                <button type="button" >Xóa</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
